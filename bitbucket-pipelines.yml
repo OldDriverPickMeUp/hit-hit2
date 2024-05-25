@@ -1,0 +1,86 @@
+# This is a sample build configuration for JavaScript.
+# Check our guides at https://confluence.atlassian.com/x/14UWN for more examples.
+# Only use spaces to indent your .yml configuration.
+# -----
+# You can specify a custom docker image from Docker Hub as your build environment.
+image: node:12.14.1
+
+definitions:   
+  steps:
+    - step: &build-step
+        name: Build
+        caches:
+          - node
+        script:
+          - npm install
+          - yarn build
+        artifacts:
+          - build/**
+    
+
+pipelines:
+  branches:
+    master:
+      - step:
+          name: Build
+          caches:
+            - node
+          script:
+            - npm install
+            - GENERATE_SOURCEMAP=false yarn build
+          artifacts:
+            - build/**
+      - step:
+          name: Prod Deployment
+          deployment: production
+          trigger: manual
+          caches:
+            - docker
+          script:
+            - pipe: atlassian/aws-s3-deploy:0.4.0
+              variables:
+                AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+                AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
+                AWS_DEFAULT_REGION: "ap-northeast-1"
+                S3_BUCKET: "hit-hit/production"
+                LOCAL_PATH: "build"
+                CACHE_CONTROL: "max-age=3600"
+                DELETE_FLAG: "true"
+                EXTRA_ARGS: "--exclude=index.html"
+            - pipe: atlassian/aws-s3-deploy:0.4.0
+              variables:
+                AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+                AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
+                AWS_DEFAULT_REGION: "ap-northeast-1"
+                S3_BUCKET: "hit-hit/production"
+                LOCAL_PATH: "build"
+                CACHE_CONTROL: "no-cache"
+                EXTRA_ARGS: "--include=index.html"
+    develop:
+      - step: *build-step
+      - step:
+          name: Test Deployment
+          deployment: staging
+          trigger: manual
+          caches:
+            - docker
+          script:
+            - pipe: atlassian/aws-s3-deploy:0.4.0
+              variables:
+                AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+                AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
+                AWS_DEFAULT_REGION: "ap-northeast-1"
+                S3_BUCKET: "hit-hit/development"
+                LOCAL_PATH: "build"
+                CACHE_CONTROL: "max-age=3600"
+                DELETE_FLAG: "true"
+                EXTRA_ARGS: "--exclude=index.html"
+            - pipe: atlassian/aws-s3-deploy:0.4.0
+              variables:
+                AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+                AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
+                AWS_DEFAULT_REGION: "ap-northeast-1"
+                S3_BUCKET: "hit-hit/development"
+                LOCAL_PATH: "build"
+                CACHE_CONTROL: "no-cache"
+                EXTRA_ARGS: "--include=index.html"

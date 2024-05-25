@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   id="svg8"
+   version="1.1"
+   viewBox="0 0 6.209588 6.209598"
+   height="6.2095981mm"
+   width="6.2095881mm">
+  <defs
+     id="defs2" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     transform="translate(-28.219986,-74.361899)"
+     id="layer1">
+    <g
+       transform="rotate(27.255302,41.560738,70.353521)"
+       id="g831">
+      <circle
+         style="opacity:0.98999999;fill:#fed7d7;fill-opacity:0.99215686;stroke:none;stroke-width:2.64583325;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+         id="path819"
+         cx="34.395832"
+         cy="80.041656"
+         r="1.3229166" />
+      <circle
+         r="1.3229166"
+         cy="82.6875"
+         cx="37.041668"
+         id="circle821"
+         style="opacity:0.98999999;fill:#cbd5e0;fill-opacity:0.99215686;stroke:none;stroke-width:2.64583325;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers" />
+      <circle
+         r="1.3229166"
+         cy="82.687485"
+         cx="34.395832"
+         id="circle823"
+         style="opacity:0.98999999;fill:#a2e5f0;fill-opacity:0.99215686;stroke:none;stroke-width:2.64583325;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers" />
+      <circle
+         style="opacity:0.98999999;fill:#cbd5e0;fill-opacity:0.99215686;stroke:none;stroke-width:2.64583325;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+         id="circle825"
+         cx="37.041668"
+         cy="80.041656"
+         r="1.3229166" />
+    </g>
+  </g>
+</svg>
